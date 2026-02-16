@@ -1,7 +1,6 @@
 # The goals for this phase include:
-# - Enemies / Collectibles appear on the board
+# - Add Enemies / Collectibles to the board
 # - Movement or spawn logic is applied
-# - The game_data dictionary is updated
 # - Board updates display changes after each move.
 
 import curses
@@ -54,7 +53,6 @@ def draw_board(stdscr):
                 row += game_data['empty']
         stdscr.addstr(y, 0, row, curses.color_pair(1))
 
-    stdscr.addstr(game_data['height'] + 1, 0, "Dynamic elements active...", curses.color_pair(1))
     stdscr.refresh()
 
 def move_player(key):
@@ -83,7 +81,6 @@ def move_eagle():
     for dx, dy in directions:
         new_x = ex + dx
         new_y = ey + dy
-        # Must be inside board and not an obstacle
         if 0 <= new_x < game_data['width'] and 0 <= new_y < game_data['height']:
             if not any(o['x'] == new_x and o['y'] == new_y for o in game_data['obstacles']):
                 game_data['eagle_pos']['x'] = new_x
@@ -94,7 +91,7 @@ def spawn_leaf():
     active_leaves = [c for c in game_data['collectibles'] if not c['collected']]
     if len(active_leaves) >= 3:
         return
-    if random.random() > 0.2:  # 20% chance each turn
+    if random.random() > 0.2:
         return
 
     while True:

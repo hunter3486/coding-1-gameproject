@@ -1,62 +1,66 @@
-# Python Game Project Requirements
+# Video Game Project
 
-## Goal
-Create a playable Python game (examples: Snake, Pac-Man, survival game, or your own idea) that demonstrates lists, loops, functions, and organized data.
+Due date: N1: 3/5 :: L2: 3/6
 
-Your game does **NOT** need to look like the example game, but it must meet the requirements below.
+When you finish, add links here and submit one link:
+* Final Code (1 per group)
+* Playtesting Video (1 per group)
 
+In this project, you will design and build a video game.  I recommend that you design a game like; snake, frogger, or pacman, but your game choice is up to you.  We will use github to manage our work and collaborate, and we will also use the curses library to enhance our terminal to simulate a video game console.  To get started, follow the link below to fork the project repository, be sure to take a look at the example project as well.
+
+#### [Please Fork this Repo to begin](https://github.com/rlj0713/coding-1-game/fork)
 ---
 
-## Required Features
+## Project Requirements:
 
-Your project must include **all** of the following:
+| Part I: Planning & Design (15 pts) |
+|----------|
+* Decide on a game idea and core goal
+* Game rules and player actions are written or sketched out
+* Main objects (player, obstacles, goals, enemies, etc.) are identified
+* Sketch a simple plan showing how the game will work step-by-step 
 
-### 1. Data Organization
-- Use **at least one dictionary** to manage game data  
-  (examples: player stats, game state, enemies, score, settings).
+| Part II: Install Curses and Print Game Elements (15 pts) |
+|----------|
+* Get Curses Installed
+* Store Game Icons in a dictionary
+* Successfully print those icons onto a game board
+* Adjust coloration so the board looks like a game console
 
-### 2. Lists & Traversal
-- Use **at least one list** to store multiple game objects.
-- Use a **loop** to traverse the list and affect gameplay  
-  (examples: checking collisions, updating enemies, collecting items).
+| Part III: Establish Movement (15 pts) |
+|----------|
+* Implement player movement (I suggest W/A/S/D or arrow keys).
+* Prevent the player from moving off the board or into obstacles.
+* Track total moves (for high-score).
+* Display the updated board after each move.
 
-### 3. Functions
-- Write **at least 5 functions**.
-- Each function should have a clear purpose (drawing, movement, logic, etc.).
 
-### 4. Return Values
-- At least one function must use `return` to control game logic  
-  (example: movement success, collision result, game state change).
+| Part IV: Add Dynamic Elements (15 pts) |
+|----------|
+* Add Enemies or Collectibles to the board
+* Apply movement or spawn logic to those elements
+* Ignore collision logic for now
+* Incorporate collectible or enemy logic to the display board function
 
-### 5. Game Mechanics
-Your game must be playable and include:
-- Player controls
-- A game loop (runs continuously)
-- A scoring, health, or progression system
-- A win **or** lose condition
 
-### 6. Code Quality
-- Clear variable and function names
-- Reasonable formatting and organization
-- Comments explaining important logic
+| Part V: Build Collision Logic (20 pts) |
+|----------|
+* Build out collision logic for enemies or collectibles.
+* Apply win/loss condition logic
+* Game over screen is displayed with high score/feedback of some kind.
 
----
+| Part VI: Reflection + Demo Video (20 pts) |
+|----------|
+* Record a screen-share of another student playing your game
+* Display a screen-share of your code and talk through your code-base
+* Take a moment to describe at least 3 portions of your code that you are most proud of
+* Both partners speak during the screen-share.
 
-## Minimum Checklist
+| Optional Bonus (+10 pts / each) --> Indicate bonus work in your video |
+|----------|
+* Build out special abilities or power-ups for the character in your game. 
+* Create multiple levels where the game increases in difficulty.
+* Add a ‘play again’ option
+* Create a leaderboard that tracks high scores
 
-Before submitting, confirm:
 
-- [ ] Uses a dictionary
-- [ ] Uses a list
-- [ ] Traverses a list with a loop
-- [ ] Contains 5+ functions
-- [ ] Uses `return` meaningfully
-- [ ] Has player input
-- [ ] Has a game loop
-- [ ] Has a win or game-over condition
-- [ ] Is playable
-
----
-
-## Creativity
-You are encouraged to design your own mechanics, theme, and rules.
