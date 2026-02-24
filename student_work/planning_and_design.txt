@@ -5,13 +5,26 @@ Part I: Planning & Design (15 pts)
 * Main objects (player, obstacles, goals, enemies, etc.) are identified
 * Sketch a simple plan showing how the game will work step-by-step
 
-Game Idea:
 
 
-Game Rules:
+Game Idea: Mariano The Pirate (similar game to super mario)
 
+Game Rules: 
+- Winning conditions: Clear the level/obstacle get the gold at the end by the time limit given
+- Losing Conditions: 
+    - Get hit by shark = lose. get hit by gold fish or sea urchins (if power up is active you lose it, if not you die)
+    - Time limit reached
+Player Actions: 
+- Fight, running/walking, get tools/items buff or debuff, defeat enemies
+Main Objects:
+- The player, obstacles, time limit = 2 mins, (lasts for 5 seconds)items(peg leg(buff=extra speed), poison scurvy(debuff=slows you down)), enemies(sharks, sea urchins, goldfish), gold
+Simple Plan: 
+Spawn in the level, player's goal is to finish the level before the time limit and get to the gold at the end of the level by avoiding obstacles, and/or defeating/avoiding enemies through player actions. Get buff or debuffs from items to help or impede you from winning. 
 
-Major Game Elements:
+Icons: 
+Make one or pull from somewhere (icons for player, enemies, items, level(landscape?))
 
+Board size = 8 by 5
 
-Gameplay Process:
+Expansion Ideas: 
+- jumping
