@@ -22,9 +22,19 @@ Simple Plan:
 Spawn in the level, player's goal is to finish the level before the time limit and get to the gold at the end of the level by avoiding obstacles, and/or defeating/avoiding enemies through player actions. Get buff or debuffs from items to help or impede you from winning. 
 
 Icons: 
-Make one or pull from somewhere (icons for player, enemies, items, level(landscape?))
+Make one or pull from somewhere (icons for player, enemies, items, time limit)
+U+1F6A3 - rowboat with person(player)
+U+1F420 - Fish(gold fish)
+U+1F300 - scurvy
+U+1F6A2 - ship in case
+U+1F421 - sea urchin (blowfish)
+U+1F42C - shark(dolphin)
+U+1F4B0 - moneybag
+time limit - U+231B (hourglass)
+U+2712 = - blacknib (peg leg)
 
-Board size = 8 by 5
+
+Board size = 10 by 5
 
 Expansion Ideas: 
 - jumping
