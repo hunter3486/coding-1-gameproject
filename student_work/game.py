@@ -148,8 +148,9 @@ def collided():
     for data in game_data.values():
         if game_data['player'] == game_data["goldfish_pos"]:
             is_collided = True
-            return "You Lose. HaArgh, HaArgh"
-            break
+            stdscr.addstr(game_data['height']) == 0,
+            f"Moves Survived: {game_data['player']['score']}",
+           #break
 #reset moves tp show change
 #not working fix
 
