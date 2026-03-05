@@ -142,9 +142,14 @@ def spawn_pegleg():
 
 #winning
 
-def winning():
-    if game_data['player'] == game_data['moneybag_col'] and collected == True:
-        print('winner')
+def collided():
+    is_collided =  False
+    
+    for data in game_data:
+        if game_data['player'] == game_data["goldfish_pos"]:
+            is_collided = True
+            print("You Lose. HaArgh, HaArgh")
+            break
 
 
 
@@ -169,7 +174,7 @@ def main(stdscr):
 
             move_player(key)
             move_goldfish()
-            winning()
+            collided()
             time.sleep(0.2)
             spawn_pegleg()
             draw_board(stdscr)
