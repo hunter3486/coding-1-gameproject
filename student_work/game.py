@@ -145,13 +145,13 @@ def spawn_pegleg():
 def collided():
     is_collided =  False
     
-    for data in game_data:
+    for data in game_data.values():
         if game_data['player'] == game_data["goldfish_pos"]:
             is_collided = True
-            print("You Lose. HaArgh, HaArgh")
+            return "You Lose. HaArgh, HaArgh"
             break
-
-
+#reset moves tp show change
+#not working fix
 
 
 #winning
