@@ -1,5 +1,7 @@
 # Write your game here
 import curses
+import random
+import time
 
 game_data = {
     'width': 10,
@@ -98,6 +100,56 @@ def move_player(key):
     game_data['player']['y'] = new_y
     game_data['player']['score'] += 1
 
+#added movement for enemies
+def move_goldfish():
+    directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+    random.shuffle(directions)
+    ex, ey = game_data['goldfish_pos']['x'], game_data['goldfish_pos']['y']
+
+    for dx, dy in directions:
+        new_x = ex + dx
+        new_y = ey + dy
+        if 0 <= new_x < game_data['width'] and 0 <= new_y < game_data['height']:
+            if not any(o['x'] == new_x and o['y'] == new_y for o in game_data['scurvy_obs']):
+                game_data['goldfish_pos']['x'] = new_x
+                game_data['goldfish_pos']['y'] = new_y
+                break
+
+def spawn_pegleg():
+    active_peglegs = [c for c in game_data['pegleg_collect'] if not c['collected']]
+    if len(active_peglegs) >= 3:
+        return
+    if random.random() > 0.2:
+        return
+
+    while True:
+        x = random.randint(0, game_data['width'] - 1)
+        y = random.randint(0, game_data['height'] - 1)
+
+        if (x, y) == (game_data['player']['x'], game_data['player']['y']):
+            continue
+        if (x, y) == (game_data['goldfish_pos']['x'], game_data['goldfish_pos']['y']):
+            continue
+        if any(o['x'] == x and o['y'] == y for o in game_data['scurvy_obs']):
+            continue
+        if any(c['x'] == x and c['y'] == y and not c['collected'] for c in game_data['pegleg_collect']):
+            continue
+
+        game_data['pegleg_collect'].append({"x": x, "y": y, "collected": False})
+        break
+
+
+
+#winning
+
+def winning():
+    if game_data['player'] == game_data['moneybag_col'] and collected == True:
+        print('winner')
+
+
+
+
+#winning
 def main(stdscr):
     curses.curs_set(0)
     stdscr.nodelay(True)
@@ -114,7 +166,15 @@ def main(stdscr):
             if key.lower() == "q":
                 break
 
+
             move_player(key)
+            move_goldfish()
+            winning()
+            time.sleep(0.2)
+            spawn_pegleg()
             draw_board(stdscr)
 
 curses.wrapper(main)
+#figure out winning
+#maybe timelimit too
+
