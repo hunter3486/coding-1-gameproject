@@ -140,22 +140,23 @@ def spawn_pegleg():
 
 
 
-#winning
+#losing
 
 def collided():
     is_collided =  False
     
-    for data in game_data.values():
-        if game_data['player'] == game_data["goldfish_pos"]:
-            is_collided = True
-            stdscr.addstr(game_data['height']) == 0,
-            f"Moves Survived: {game_data['player']['score']}",
-           #break
-#reset moves tp show change
-#not working fix
+    if game_data['player']["x"] == game_data["goldfish_pos"]["x"] and game_data['player']["y"] == game_data["goldfish_pos"]["y"]:
+        is_collided = True
+        game_data['player']['score'] = 0
+        f'Moves Survived: {game_data['player']['score']}'
 
+def winning(): 
+    if game_data['player']['x'] == game_data['moneybag_col']['x'] and game_data['player']['y'] == game_data['moneybag_col']['y']: 
+        print("Win!")
+        exit()
+            
+           
 
-#winning
 def main(stdscr):
     curses.curs_set(0)
     stdscr.nodelay(True)
@@ -177,10 +178,9 @@ def main(stdscr):
             move_goldfish()
             collided()
             time.sleep(0.2)
+            # winning()
             spawn_pegleg()
             draw_board(stdscr)
 
 curses.wrapper(main)
-#figure out winning
-#maybe timelimit too
 
