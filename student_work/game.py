@@ -9,9 +9,7 @@ game_data = {
     'player': {"x": 0, "y": 0, 'score': 0},
     'goldfish_pos': {"x": 8, "y":4},
    
-    'moneybag_col': [
-        {"x": 9, "y": 4, "collected": False},
-    ],
+    'moneybag_pos':{"x": 9, "y": 4},
 
     'pegleg_collect': [
         {"x": 6, "y": 2, "collected": False},
@@ -25,7 +23,7 @@ game_data = {
     'goldfish': [
         {"x": 1, "y": 2},
         ],
-
+    'is_win': {'x': "False"},
 
     # ASCII icons
     'goldfish': "\U0001F420",
@@ -48,7 +46,10 @@ def draw_board(stdscr):
             # Player
             if x == game_data['player']['x'] and y == game_data['player']['y']:
                 row += game_data['playericon']
-            #Eagle
+            
+            #moneyba
+            elif x == game_data['moneybag_pos']['x'] and y == game_data['moneybag_pos']['y']:
+                row += game_data['moneybag']
             elif x == game_data['goldfish_pos']['x'] and y == game_data['goldfish_pos']['y']:
                 row += game_data['goldfish']
         #     # Obstacles
@@ -57,8 +58,6 @@ def draw_board(stdscr):
         #     # Collectibles
             elif any(c['x'] == x and c['y'] == y and not c['collected'] for c in game_data['pegleg_collect']):
                 row += game_data['pegleg']
-            elif any(c['x'] == x and c['y'] == y and not c['collected'] for c in game_data['moneybag_col']):
-                row += game_data['moneybag']
             else:
                 row += game_data['empty']
         stdscr.addstr(y, 0, row, curses.color_pair(1))
@@ -70,6 +69,9 @@ def draw_board(stdscr):
     stdscr.addstr(game_data['height'] + 2, 0,
                   "Move with W/A/S/D, Q to quit",
                   curses.color_pair(1))
+    stdscr.addstr(game_data['height'] + 3, 0, 
+                   f"Victory Reached: {game_data['is_win']['x']}", 
+                   curses.color_pair(1))
     stdscr.refresh()
 
 
@@ -151,9 +153,13 @@ def collided():
         f'Moves Survived: {game_data['player']['score']}'
 
 def winning(): 
-    if game_data['player']['x'] == game_data['moneybag_col']['x'] and game_data['player']['y'] == game_data['moneybag_col']['y']: 
-        print("Win!")
-        exit()
+    if game_data['player']['x'] == game_data['moneybag_pos']["x"] and game_data['player']['y'] == game_data['moneybag_pos']['y']: 
+        game_data['player']['score'] = 100
+        game_data['is_win']['x'] = "True"
+        f'Moves Survived: {game_data['player']['score']}'
+        f'Victory Reached: {game_data['is_win']['x']}'
+
+
             
            
 
@@ -178,7 +184,7 @@ def main(stdscr):
             move_goldfish()
             collided()
             time.sleep(0.2)
-            # winning()
+            winning()
             spawn_pegleg()
             draw_board(stdscr)
 
